@@ -9,5 +9,8 @@ bot.remove_command('help') # удаляем встроенную команду 
 async def on_ready():
     print("Бот запустился")
 
+for file in os.listdir("./cogs"):
+    if file.endswith(".py"):
+        bot.load_extension(f"cogs.{file[:-3]}")
 
 bot.run(token) # запуск бота
