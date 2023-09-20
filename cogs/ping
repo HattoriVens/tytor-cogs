@@ -1,0 +1,15 @@
+import disnake
+from disnake.ext import commands
+
+class CommandPing(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def ping(self, ctx):
+        latency = round(self.bot.latency * 1000)  # Задержка бота в миллисекундах
+        await ctx.send(f'Pong! Задержка: `{latency}ms`')
+
+
+def setup(bot):
+    bot.add_cog(CommandPing(bot))
